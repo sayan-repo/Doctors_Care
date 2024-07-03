@@ -4,12 +4,12 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 const userSchema = new mongoose.Schema({
-    firstName: {
+    firstname: {
       type: String,
       required: [true, "First Name Is Required!"],
       minLength: [3, "Min. 3 Characters!"],
     },
-    lastName: {
+    lastname: {
       type: String,
       required: [true, "Last Name Is Required!"],
       minLength: [3, "Min. 3 Characters!"],
@@ -76,5 +76,6 @@ userSchema.methods.generateJsonWebToken = function () {
       expiresIn: process.env.JWT_EXPIRES,
     });
 };
+
 
 export const User = mongoose.model("User", userSchema);
