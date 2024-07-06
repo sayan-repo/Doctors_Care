@@ -53,8 +53,7 @@ export const login = catchAsyncErrors(async (req, res, next) => {
     }
     if (password !== confirmPassword) {
         return next(
-            new ErrorHandler("Password & Confirm Password Do Not Match!", 400)
-        );
+            new ErrorHandler("Password & Confirm Password Do Not Match!", 400));
     }
 
     const user = await User.findOne({ email }).select("+password");
@@ -133,10 +132,10 @@ export const logoutAdmin = catchAsyncErrors(async (req, res, next) => {
         httpOnly: true,
         expires: new Date(Date.now()),
     })
-        .json({
-            success: true,
-            message: "Logged Out Successfully!",
-        });
+    .json({
+        success: true,
+        message: "Logged Out Successfully!",
+    });
 });
 
 export const logoutPatient = catchAsyncErrors(async (req, res, next) => {
